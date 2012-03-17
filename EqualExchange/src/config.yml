@@ -1,0 +1,21 @@
+###############################################################
+#             Equal Exchange Plugin Configuration             #
+#             Author: nala3                                   #
+#   Based off of the mod EQUIVALENT EXCHANGE 2 by x3n0ph0b3   #
+#             ( http://bit.ly/Au41XK )                        #
+#   Be sure to check out the original mod, it has an awesome  #
+#   level of over 9000!                                       #
+###############################################################
+Enabled: true
+
+DefaultAmount: 0
+
+DatabaseConfig:
+    #Currently, the only valid type is MySQL. SQLite and flatfile may be added later.
+    type: MySQL
+    host: localhost
+    port: 3306
+    user: root
+    password: walrus
+    database: ee
+    

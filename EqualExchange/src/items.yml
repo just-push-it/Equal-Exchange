@@ -1,0 +1,171 @@
+Items:
+    Fern: 0
+    Long Grass: 0
+    Vine: 0
+
+    Cobblestone: 1
+    CobblestoneSlab: 1
+    Dead Bush: 1
+    Dirt: 1
+    Glass: 1
+    Grass: 1
+    Ice: 1
+    Leaves: 1
+    Mycellium: 1
+    Netherrack: 1
+    Sand: 1
+    Snow: 1
+    Stone: 1
+    StoneBrickStairs: 1
+    StoneBricks: 1
+    StoneSlab: 1
+    StoneStairs: 1
+
+    Button: 2
+    StonePressurePlate: 2
+
+    Gravel: 4
+    NetherBrick: 4
+    Stick: 4
+    Sandstone: 4
+    SandstoneSlab: 4
+
+    Lever: 5
+
+    Cactus: 8
+    Furnace: 8
+    Vines: 8
+    WoodenPlanks: 8
+    WoodenSlab: 8
+
+    Torch: 9
+
+    Cobweb: 12
+    Fence: 12
+    FishingRod: 12
+    String: 12
+    WoodenStairs: 12
+
+    Ladder: 14
+    Arrow: 14
+
+    Flower: 16
+    Rose: 16
+    LilyPad: 16
+    WoodenPressurePlate: 16
+    Seeds: 16
+    MelonSeeds: 16
+
+    Wheat: 24
+    TrapDoor: 24
+
+    Charcoal: 32
+    CraftingTable: 32
+    FenceGate: 32
+    RedMushroom: 32
+    BrownMushroom: 32
+    Sapling: 32
+    Wood: 32
+    Sugarcane: 32
+    Paper: 32
+    Sugar: 32
+    BoneMeal: 32
+
+    Wool: 48
+
+    SoulSand: 49
+
+    Chest: 64
+    Obsidian: 64
+    Redstone: 64
+    Porkchop: 64
+    Beef: 64
+    Fish: 64
+    Chicken: 64
+    Leather: 64
+    Clay: 64
+
+    RedstoneTorch: 68
+    Bread: 72
+    Painting: 80
+
+    IronBars: 96
+    Rail: 96
+    Book: 96
+    Bone: 96
+
+    Dispenser: 119
+
+    Coal: 128
+    NoteBlock: 128
+    SpiderEye: 128
+
+    JackoLantern:  144
+    Melon:  144
+    Pumpkin:  144
+    Bed:  144
+
+    MossStone: 145
+
+    Gunpowder: 192
+    FermentedSpiderEye: 192
+
+    GlisteningMelon: 243
+
+    BrickBlock: 256
+    BrickSlab: 256
+    ClayBlock: 256
+    DetectorRail: 256
+    Iron: 256
+
+    Bookshelf: 336
+
+    BrickStairs: 348
+    Piston: 348
+
+    StickyPiston: 372
+
+    Cake: 384
+    GlowstoneDust: 384
+
+    BlazePowder: 768
+    Bucket: 768
+
+    WaterBucket: 769
+    MagmaCream: 792
+    Lavabucket: 832
+    Milk: 833
+    LapisLazuli: 864
+    TNT: 964
+    EnderPearl: 1,024
+    Compass: 1,088
+    Minecart: 1,280
+    MinecartwithFurnace: 1,288
+    MinecartwithChest: 1,344
+
+    Glowstone: 1,536
+    IronDoor: 1,536
+    BlazeRod: 1,536
+
+    BrewingStand: 1,539
+    EyeOfEnder: 1,792
+    Gold: 2,048 
+    PoweredRail: 2,048
+
+    IronBlock: 2,304
+    GhastTear: 4,096
+    LapisLazuliBlock: 7,776
+    Diamond: 8,192
+    DiamondShovel: 8,200
+    Jukebox: 8,256
+    DiamondSword: 16,388
+    DiamondHoe: 16,392
+    EnchantmentTable: 16,736
+    GoldBlock: 18,432
+    DiamondPickaxe: 24,584
+    DiamondAxe: 24,584
+    DiamondBoots: 32,768
+    DiamondHelmet: 40,960
+    DiamondLeggings: 57,344
+    DiamondChestplate: 65,536
+    DiamondBlock: 73,728

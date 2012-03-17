@@ -1,0 +1,7 @@
+name: EqualExchange
+version: 0.1a
+description: Plugin version of the EE mod.
+author: nala3
+
+main: net.worldoftomorrow.ee.EqualExchange
+database: false
