@@ -1,6 +1,41 @@
 package net.worldoftomorrow.ee;
 
 public class DataID {
+	public enum EDataID{
+		STONE(0),
+		SANDSTONE(1),
+		WOOD(2),
+		COBBLESTONE(3),
+		BRICK(4),
+		STONEBRICK(5),
+		//Cloth Color
+		WHITE(0),
+		ORANGE(1),
+		MAGENTA(2),
+		LIGHTBLUE(3),
+		YELLOW(4),
+		LIGHTGREEN(5),
+		PINK(6),
+		GRAY(7),
+		LIGHTGRAY(8),
+		CYAN(9),
+		PURPLE(10),
+		BLUE(11),
+		BROWN(12),
+		GREEN(13),
+		RED(14),
+		BLACK(15);
+		
+		private final int id;
+		private EDataID(int id){
+			this.id = id;
+		}
+		
+		public int getID(){
+			return id;
+		}
+
+	}
 	//Slabs
 	public static final int STONE = 0;
 	public static final int SANDSTONE = 1;

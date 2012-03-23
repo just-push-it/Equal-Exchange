@@ -1,6 +1,6 @@
 Items:
     Fern: 0
-    Long Grass: 0
+    LongGrass: 0
     Vine: 0
 
     Cobblestone: 1
@@ -140,8 +140,8 @@ Items:
     EnderPearl: 1,024
     Compass: 1,088
     Minecart: 1,280
-    MinecartwithFurnace: 1,288
-    MinecartwithChest: 1,344
+    MinecartWithFurnace: 1,288
+    MinecartWithChest: 1,344
 
     Glowstone: 1,536
     IronDoor: 1,536

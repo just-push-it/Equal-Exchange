@@ -1,5 +1,9 @@
 package net.worldoftomorrow.ee;
 
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 
 import net.worldoftomorrow.ee.ConfigurationManager.ConfigFile;

@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandException;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -60,7 +59,7 @@ public class CommandManager {
 								data = MathHelper.getData(args[2]); //Get the data 
 								DatabaseManager.subtractFromBalance(player, MathHelper.getItemValue(id)); //Subtract from account balance.
 								InventoryManager.giveItems(inv, id, data, 1); //Give the items!
-							} else { throw new CommandException ("[EE] This item does not support data."); } //Throw CE if the item does not support data values.
+							} else { player.sendMessage(ChatColor.BLUE + "[EE] This item does not support data."); } //Throw CE if the item does not support data values.
 						} else { player.sendMessage(ChatColor.BLUE + "[EE] You can not afford this item!"); } //if they can't afford it, tell them :D
 					} else { //If does not have data value
 						id = SpawnableItem.lookup(args[2]).getID();
@@ -76,7 +75,7 @@ public class CommandManager {
 					
 					try{ amount = Integer.parseInt(args[3]); } //Try to parse the amount.
 					catch (NumberFormatException e) { //If the amount can not be parsed, stop and throw a Command Exception.
-						throw new CommandException ("[EE] Integer expected, string received.");
+						player.sendMessage(ChatColor.BLUE + "[EE] Integer expected, string received.");
 					}
 					if(amount != 0){
 						if(args[2].contains(":")){ //If contains data value
@@ -87,7 +86,7 @@ public class CommandManager {
 									data = MathHelper.getData(args[2]); //Get the data 
 									DatabaseManager.subtractFromBalance(player, MathHelper.getItemValue(id) * amount); //Subtract from account balance.
 									InventoryManager.giveItems(inv, id, data, amount); //Give the items!
-								} else { throw new CommandException ("[EE] This item does not support data."); } //Throw CE if the item does not support data values.
+								} else { player.sendMessage(ChatColor.BLUE + "[EE] This item does not support data."); } //Throw CE if the item does not support data values.
 							} else { player.sendMessage(ChatColor.BLUE + "[EE] You can not afford this item!"); } //if they can't afford it, tell them :D
 						} else { //If does not have data value
 							id = SpawnableItem.lookup(args[2]).getID();
@@ -113,7 +112,7 @@ public class CommandManager {
 			
 			/*----------VERSION----------*/
 			else if(args[1].equalsIgnoreCase("version")){
-				
+				player.sendMessage(ChatColor.BLUE + ("[EE] This server is running Equal Exchange version ") + ConfigHelper.version());
 			}
 			
 			/*----------SET----------*/
@@ -125,7 +124,7 @@ public class CommandManager {
 					try{ i = Integer.parseInt(args[2]); }
 					catch(NumberFormatException e){
 						execute = false; //This makes it so the account is not wiped even after the exception is thrown.
-						throw new CommandException("[EE] The amount to set must be numerical and whole.");
+						player.sendMessage(ChatColor.BLUE + "[EE] The amount to set must be numerical and whole.");
 					}
 					if(execute){ DatabaseManager.setBalance(player, i); }
 					//even if there is anything in args[4]+, they are just ignored.
@@ -133,7 +132,7 @@ public class CommandManager {
 					try{ i = Integer.parseInt(args[3]); } //Parse the 3rd argument this time
 					catch(NumberFormatException e){
 						execute = false; //This makes it so the account is not wiped accidentally after the exception is thrown.
-						throw new CommandException("[EE] The amount to set must be numerical and whole.");
+						player.sendMessage(ChatColor.BLUE + "[EE] The amount to set must be numerical and whole.");
 					}
 					Player target = Bukkit.getPlayer(args[2]);
 					if(execute){
@@ -148,17 +147,21 @@ public class CommandManager {
 			
 			/*----------RESET----------*/
 			else if(args[1].equalsIgnoreCase("reset")){
-				throw new CommandException("[EE] This has not yet been implemented.");
+				player.sendMessage(ChatColor.BLUE + "[EE] This has not yet been implemented.");
 			}
 			
 			/*----------UPDATECHECK----------*/
 			else if(args[1].equalsIgnoreCase("updatecheck")){
-				throw new CommandException("[EE] This has not yet been implemented.");
+				player.sendMessage(ChatColor.BLUE + "[EE] This has not yet been implemented.");
 			}
 		
 			/*----------HELP----------*/
 			else if(args[1].equalsIgnoreCase("help")){
-				throw new CommandException("[EE] This has not yet been implemented.");
+				player.sendMessage(ChatColor.BLUE + "[EE] This has not yet been implemented.");
+			}
+		
+			else if(args[1].equalsIgnoreCase("reloaditems")){
+				ItemMap.readItems();
 			}
 		}
 }

@@ -52,9 +52,10 @@ public class EqualExchange extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-
+		
 	}
 	
+	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		if (commandLabel.equalsIgnoreCase("ee")) {
 			try {
