@@ -7,8 +7,11 @@
 #   level of over 9000!                                       #
 ###############################################################
 Enabled: true
+EnableLogging: true
 
 DefaultAmount: 0
+#Valid logging options are: text or html
+LogType: html
 
 DatabaseConfig:
     #Currently, the only valid type is MySQL. SQLite and flatfile may be added later.

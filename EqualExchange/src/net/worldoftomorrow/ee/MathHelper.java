@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import org.bukkit.entity.Player;
 
 import net.worldoftomorrow.ee.ConfigurationManager.ConfigFile;
+import net.worldoftomorrow.ee.Items.DataItem;
+import net.worldoftomorrow.ee.Items.SpawnableItem;
 
 public class MathHelper {
 	

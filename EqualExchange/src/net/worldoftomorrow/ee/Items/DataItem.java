@@ -1,9 +1,11 @@
-package net.worldoftomorrow.ee;
+package net.worldoftomorrow.ee.Items;
 
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import net.worldoftomorrow.ee.StringHelper;
 
 public enum DataItem {
 	STONE_SLAB(DataID.STONE, "Stone", "stone", "rock"),
@@ -23,7 +25,7 @@ public enum DataItem {
 	GRAY(DataID.GRAY, "Gray", "gray", "grey", "darkgrey", "darkgray", "dg", "gra"),
 	LIGHTGRAY(DataID.LIGHTGRAY, "Lightgray", "lightgray", "lightgrey", "lgra", "lgre"),
 	CYAN(DataID.CYAN, "Cyan", "cyan", "c"),
-	PURPLE(DataID.PURPLE, "Purple", "purple",  "pur"),
+	PURPLE(DataID.PURPLE, "Purple", "purple", "pur"),
 	BLUE(DataID.BLUE, "Blue", "blue", "darkblue", "dbl", "blu"),
 	BROWN(DataID.BROWN, "Brown", "brown", "br"),
 	GREEN(DataID.GREEN, "Green", "green", "darkgreen", "dg", "gre"),

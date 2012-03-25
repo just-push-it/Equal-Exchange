@@ -1,4 +1,4 @@
-package net.worldoftomorrow.ee;
+package net.worldoftomorrow.ee.Items;
 
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+
+
+import net.worldoftomorrow.ee.StringHelper;
 
 import org.bukkit.command.CommandException;
 

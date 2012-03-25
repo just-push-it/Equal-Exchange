@@ -1,4 +1,4 @@
-package net.worldoftomorrow.ee;
+package net.worldoftomorrow.ee.Items;
 
 public class DataID {
 	public enum EDataID{

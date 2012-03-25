@@ -1,10 +1,11 @@
-package net.worldoftomorrow.ee;
+package net.worldoftomorrow.ee.Items;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.Material;
 
+import net.worldoftomorrow.ee.ConfigurationManager;
 import net.worldoftomorrow.ee.ConfigurationManager.ConfigFile;
 
 public class ItemMap {
@@ -24,15 +25,9 @@ public class ItemMap {
 	    GLASS(Material.GLASS.getId()),
 	    GRASS(Material.GRASS.getId()),
 	    ICE(Material.ICE.getId()),
-	    OAKLEAVES(Material.LEAVES.getId()),
-	    PINELEAVES(Material.LEAVES.getId(), 1),
-	    BIRCHLEAVES(Material.LEAVES.getId(), 2),
-	    JUNGLELEAVES(Material.LEAVES.getId(), 3),
 	    MYCELLIUM(Material.MYCEL.getId()),
-	    NETHERRACK(Material.NETHERRACK.getId()),
 	    BUTTON(Material.STONE_BUTTON.getId()),
 	    GRAVEL(Material.GRAVEL.getId()),
-	    NETHERBRICK(Material.NETHER_BRICK.getId()),
 	    LEVER(Material.LEATHER.getId()),
 	    CACTUS(Material.CACTUS.getId()),
 	    FURNACE(Material.FURNACE.getId()),
@@ -42,40 +37,21 @@ public class ItemMap {
 	    FENCE(Material.FENCE.getId()),
 	    FISHINGROD(Material.FISHING_ROD.getId()),
 	    STRING(Material.STRING.getId()),
-
 	    LADDER(Material.LADDER.getId()),
 	    ARROW(Material.ARROW.getId()),
-	    FLOWER(Material.YELLOW_FLOWER.getId()),
-	    ROSE(Material.RED_ROSE.getId()),
-	    LILYPAD(Material.WATER_LILY.getId()),
-
-	    SEEDS(Material.SEEDS.getId()),
-	    MELONSEEDS(Material.MELON_SEEDS.getId()),
-	    WHEAT(Material.WHEAT.getId()),
 	    TRAPDOOR(Material.TRAP_DOOR.getId()),
 	    CHARCOAL(Material.COAL.getId(), 1),
 	    CRAFTINGTABLE(Material.WORKBENCH.getId()),
 	    FENCEGATE(Material.FENCE_GATE.getId()),
-	    REDMUSHROOM(Material.RED_MUSHROOM.getId()),
-	    BROWNMUSHROOM(Material.BROWN_MUSHROOM.getId()),
-	    SAPLING(Material.SAPLING.getId()), //TODO: Need all the sapling types
-	    SUGARCANE(Material.SUGAR_CANE.getId()),
 	    PAPER(Material.PAPER.getId()),
-	    SUGAR(Material.SUGAR.getId()),
 	    BONEMEAL(Material.INK_SACK.getId(), 15), //TODO: Need the other colors too
 	    WOOL(Material.WOOL.getId()), //TODO: Need the other colors too
-	    SOULSAND(Material.SOUL_SAND.getId()),
 	    CHEST(Material.CHEST.getId()),
 	    OBSIDIAN(Material.OBSIDIAN.getId()),
 	    REDSTONE(Material.REDSTONE.getId()),
-	    PORKCHOP(Material.PORK.getId()), //TODO: Cooked and uncooked
-	    BEEF(Material.RAW_BEEF.getId()), //TODO: Cooked and uncooked
-	    FISH(Material.RAW_FISH.getId()), //TODO: Cooked and uncooked
-	    CHICKEN(Material.RAW_CHICKEN.getId()), //TODO: Cooked and uncooked
 	    LEATHER(Material.LEATHER.getId()),
 	    CLAY(Material.CLAY_BALL.getId()),
 	    REDSTONETORCH(Material.REDSTONE_TORCH_ON.getId()),
-	    BREAD(Material.BREAD.getId()),
 	    PAINTING(Material.PAINTING.getId()),
 	    RAIL(Material.RAILS.getId()),
 	    BOOK(Material.BOOK.getId()),
@@ -85,13 +61,10 @@ public class ItemMap {
 	    NOTEBLOCK(Material.NOTE_BLOCK.getId()),
 	    SPIDEREYE(Material.SPIDER_EYE.getId()),
 	    JACKOLANTERN(Material.JACK_O_LANTERN.getId()), 
-	    MELON(Material.MELON.getId()), 
-	    PUMPKIN(Material.PUMPKIN.getId()), 
 	    BED(Material.BED.getId()), 
 	    MOSSSTONE(Material.MOSSY_COBBLESTONE.getId()),
 	    GUNPOWDER(Material.SULPHUR.getId()),
 	    FERMENTEDSPIDEREYE(Material.FERMENTED_SPIDER_EYE.getId()),
-	    GLISTENINGMELON(Material.SPECKLED_MELON.getId()),
 	    BRICKBLOCK(Material.BRICK.getId()),
 	    BRICKSLAB(Material.STEP.getId(), 4),
 	    CLAYBLOCK(Material.CLAY.getId()),
@@ -100,14 +73,9 @@ public class ItemMap {
 	    BRICKSTAIRS(Material.BRICK_STAIRS.getId()),
 	    PISTON(33),
 	    STICKYPISTON(29),
-	    CAKE(Material.CAKE.getId()),
 	    GLOWSTONEDUST(Material.GLOWSTONE_DUST.getId()),
 	    BLAZEPOWDER(Material.BLAZE_POWDER.getId()),
-	    BUCKET(Material.BUCKET.getId()),
-	    WATERBUCKET(Material.WATER_BUCKET.getId()),
 	    MAGMACREAM(Material.MAGMA_CREAM.getId()),
-	    LAVABUCKET(Material.LAVA_BUCKET.getId()),
-	    MILK(Material.MILK_BUCKET.getId()),
 	    LAPISLAZULI(Material.INK_SACK.getId(), 4),
 	    TNT(Material.TNT.getId()),
 	    ENDERPEARL(Material.ENDER_PEARL.getId()),
@@ -115,25 +83,76 @@ public class ItemMap {
 	    MINECART(Material.MINECART.getId()),
 	    FURNACEMINECART(Material.POWERED_MINECART.getId()),
 	    CHESTCART(Material.STORAGE_MINECART.getId()),
-	    GLOWSTONE(Material.GLOWSTONE.getId()),
 	    BLAZEROD(Material.BLAZE_ROD.getId()),
 	    BREWINGSTAND(Material.BREWING_STAND_ITEM.getId()),
 	    EYEOFENDER(Material.EYE_OF_ENDER.getId()),
 	    POWEREDRAIL(Material.POWERED_RAIL.getId()),
-	    GHASTTEAR(Material.GHAST_TEAR.getId()),
 	    LAPISLAZULIBLOCK(Material.LAPIS_BLOCK.getId()),
 	    JUKEBOX(Material.JUKEBOX.getId()),
 	    ENCHANTMENTTABLE(Material.ENCHANTMENT_TABLE.getId()),
-	    //Wood
+	    /* Nether */
+	    GHASTTEAR(Material.GHAST_TEAR.getId()),
+	    GLOWSTONE(Material.GLOWSTONE.getId()),
+	    SOULSAND(Material.SOUL_SAND.getId()),
+	    NETHERRACK(Material.NETHERRACK.getId()),
+	    NETHER_BRICK(Material.NETHER_BRICK.getId()),
+	    NETHER_BRICK_STAIRS(Material.NETHER_BRICK_STAIRS.getId()),
+	    NETHER_FENCE(Material.NETHER_FENCE.getId()),
+	    
+	    /* Buckets */
+	    BUCKET(Material.BUCKET.getId()),
+	    BUCKET_WATER(Material.WATER_BUCKET.getId()),
+	    BUCKET_LAVA(Material.LAVA_BUCKET.getId()),
+	    BUCKET_MILK(Material.MILK_BUCKET.getId()),
+	    
+	    /* Food | Plants */
+	    PORK_RAW(Material.PORK.getId()),
+	    PORK_COOKED(Material.GRILLED_PORK.getId()),
+	    BEEF_RAW(Material.RAW_BEEF.getId()),
+	    BEEF_COOKED(Material.COOKED_BEEF.getId()),
+	    FISH_RAW(Material.RAW_FISH.getId()),
+	    FISH_COOKED(Material.COOKED_FISH.getId()),
+	    CHICKEN_RAW(Material.RAW_CHICKEN.getId()),
+	    CHICKEN_COOKED(Material.COOKED_CHICKEN.getId()),
+	    MUSHROOM_RED(Material.RED_MUSHROOM.getId()),
+	    MUSHROOM_BROWN(Material.BROWN_MUSHROOM.getId()),
+	    MUSHROOM_SOUP(Material.MUSHROOM_SOUP.getId()),
+	    BREAD(Material.BREAD.getId()),
+	    GOLD_MELON_SLICE(Material.SPECKLED_MELON.getId()),
+	    CAKE(Material.CAKE.getId()),
+	    SEEDS(Material.SEEDS.getId()),
+	    FLOWER(Material.YELLOW_FLOWER.getId()),
+	    ROSE(Material.RED_ROSE.getId()),
+	    LILYPAD(Material.WATER_LILY.getId()),
+	    MELON_SEEDS(Material.MELON_SEEDS.getId()),
+	    MELON_BLOCK(Material.MELON_BLOCK.getId()),
+	    MELON_SLICE(Material.MELON.getId()),
+	    WHEAT(Material.WHEAT.getId()),
+	    PUMPKIN(Material.PUMPKIN.getId()),
+	    SUGAR_CANE(Material.SUGAR_CANE.getId()),
+	    SUGAR(Material.SUGAR.getId()),
+	    LEAVES_OAK(Material.LEAVES.getId()),
+	    LEAVES_PINE(Material.LEAVES.getId(), 1),
+	    LEAVES_BIRCH(Material.LEAVES.getId(), 2),
+	    LEAVES_JUNGLE(Material.LEAVES.getId(), 3),
+	    SAPLING(Material.SAPLING.getId()), //TODO: Need all the sapling types
+	    
+	    /* Wood */
 	    STICK(Material.STICK.getId()),
 	    WOOD_PLATE(Material.WOOD_PLATE.getId()),
 	    WOOD_STAIRS(Material.WOOD_STAIRS.getId()),
 	    WOOD_SLAB(Material.STEP.getId(), 2),
-	    //Sand | Sandstone
+	    LOG_OAK(Material.LOG.getId()),
+	    LOG_PINE(Material.LOG.getId(), 1),
+	    LOG_BIRCH(Material.LOG.getId(), 2),
+	    LOG_JUNGLE(Material.LOG.getId(), 3),
+	    
+	    /* Sand | Sandstone */
 	    SAND(Material.SAND.getId()),
 	    SANDSTONE(Material.SANDSTONE.getId()),
-	    SANDSTONE_SLAB(Material.STEP.getId(), 1), //TODO: Add the new sandstone blocks from 1.2.4
-	    //Stone | Cobblestone
+	    SANDSTONE_SLAB(Material.STEP.getId(), 1), //TODO: Add the new sandstone blocks for 1.2.4
+	    
+	    /* Stone | Cobblestone */
 	    STONE(Material.STONE.getId()),
 	    STONE_PICKAXE(Material.STONE_PICKAXE.getId()),
 	    STONE_AXE(Material.STONE_AXE.getId()),
@@ -145,7 +164,8 @@ public class ItemMap {
 	    COBBLESTONE(Material.COBBLESTONE.getId()),
 	    COBBLESTONE_SLAB(Material.STEP.getId(), 3),
 	    COBBLESTONE_STAIRS(Material.COBBLESTONE_STAIRS.getId()),
-	    //Iron
+	    
+	    /* Iron */
 	    IRON(Material.IRON_INGOT.getId()),
 	    IRON_ORE(Material.IRON_ORE.getId()),
 	    IRON_BLOCK(Material.IRON_BLOCK.getId()), 
@@ -160,7 +180,8 @@ public class ItemMap {
 	    IRON_BOOTS(Material.IRON_BOOTS.getId()),
 	    IRON_BARS(Material.IRON_FENCE.getId()),
 	    IRON_DOOR(Material.IRON_DOOR.getId()),
-	    //Gold
+	    
+	    /* Gold */
 	    GOLD(Material.GOLD_INGOT.getId()),
 	    GOLD_NUGGET(Material.GOLD_NUGGET.getId()),
 	    GOLD_BLOCK(Material.GOLD_BLOCK.getId()),
@@ -174,7 +195,8 @@ public class ItemMap {
 	    GOLD_CHESTPLATE(Material.GOLD_CHESTPLATE.getId()),
 	    GOLD_LEGGINGS(Material.GOLD_LEGGINGS.getId()),
 	    GOLD_BOOTS(Material.GOLD_BOOTS.getId()),
-	    //Diamond
+	    
+	    /* Diamond */
 	    DIAMOND(Material.DIAMOND.getId()),
 	    DIAMOND_BLOCK(Material.DIAMOND_BLOCK.getId()),
 	    DIAMOND_SWORD(Material.DIAMOND_SWORD.getId()),
@@ -189,8 +211,10 @@ public class ItemMap {
 	    //TODO: Get all the other ones I am missing. Which is a lot.
 	    //TODO: Add the names for items.yml reference.
 	    
-	    private int id;
-	    private int data;
+	    @SuppressWarnings("unused")
+		private int id;
+	    @SuppressWarnings("unused")
+		private int data = 0;
 	    private Items(int id, int data){
 	    	this.id = id;
 	    	this.data = data;

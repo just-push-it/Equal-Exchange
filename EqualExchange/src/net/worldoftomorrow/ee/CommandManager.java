@@ -2,6 +2,9 @@ package net.worldoftomorrow.ee;
 
 import java.sql.SQLException;
 
+import net.worldoftomorrow.ee.Items.ItemMap;
+import net.worldoftomorrow.ee.Items.SpawnableItem;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
