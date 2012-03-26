@@ -1,8 +1,6 @@
 package net.worldoftomorrow.ee.logging;
 
 import java.util.Date;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
@@ -55,6 +53,17 @@ public class LogFormatter extends Formatter{
 		
 		buf.append(formatMessage(rec) + "</p>\n");
 		buf.append("</td>");
+		
+		Throwable t = rec.getThrown();
+		buf.append("<td>");
+		if(t != null){
+			String m = t.getMessage();
+			String c = t.getClass().getName();
+			buf.append(c);
+			buf.append("</td><td>");
+			buf.append(m);
+		}
+		buf.append("</td>");
 		buf.append("</tr>\n");
 		return buf.toString();
 	}
@@ -70,19 +79,10 @@ public class LogFormatter extends Formatter{
 		return df.format(d);
 	}
 	
-	public static String getStackTrace(Throwable t){
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw, true);
-		t.printStackTrace(pw);
-		pw.flush();
-		sw.flush();
-		return sw.toString();
-	}
-	
 	public String getHead(Handler h){
 		return "<html>\n<head>\n" + (new Date()) + "\n</head>\n<body>\n<pre>\n"
 		+ "<table border>\n  "
-		+ "<tr><th>Time</th><th>Level</th><th>Record</th></tr>\n";
+		+ "<tr><th>Time</th><th>Level</th><th>Record</th><th>Class</th><th>Message</th></tr>\n";
 	}
 	
 	public String getTail(Handler h){

@@ -1,5 +1,6 @@
 package net.worldoftomorrow.ee.logging;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.FileHandler;
@@ -21,28 +22,29 @@ public class EELogger {
 		@SuppressWarnings("unused")
 		FileOutputStream ostream = null;
 		try {
-			Logger log = Logger.getLogger("EqualExchange");
+			Logger log = Logger.getLogger("Minecraft.EqualExchange");
 			if(type.equalsIgnoreCase("text")){
-				//TODO: Figure out why the file gets reset every damned time.
-				ostream = new FileOutputStream("EELog.log");
-				logFile = new FileHandler("EELog.log");
+				File eelog = new File("EELog.log");
+				if(!eelog.exists()){
+					eelog.createNewFile();
+				//	ostream = new FileOutputStream("EELog.log");
+				}
+				logFile = new FileHandler("EELog.log", true); //Append: true - So the file does not get reset every time.
 				logFormat = new SimpleFormatter();
 				logFile.setFormatter(logFormat);
 				log.addHandler(logFile);
 			}
 			else if(type.equalsIgnoreCase("html")){
-				ostream = new FileOutputStream("EELog.html");
-				htmlFile = new FileHandler("EELog.html");
+				File eelog = new File("EELog.html");
+				if(!eelog.exists()){
+					eelog.createNewFile();
+				//	ostream = new FileOutputStream("EELog.html");
+				}
+				htmlFile = new FileHandler("EELog.html", true);
 				htmlFormat = new LogFormatter();
 				htmlFile.setFormatter(htmlFormat);
 				log.addHandler(htmlFile);
-			} else {
-				ostream = new FileOutputStream("EELog.log");
-				logFile = new FileHandler ("equalExchange.log");
-			    logFormat = new SimpleFormatter();
-			    logFile.setFormatter(logFormat);
-				log.addHandler(logFile);
-			}
+			} else {/* Do nothing because they screwed up the config! */}
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -15,7 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class EqualExchange extends JavaPlugin {
 
 	private static final Logger log = Logger.getLogger("Minecraft");
-	private static final Logger eelog = Logger.getLogger("EqualExchange");
+	private static final Logger eelog = Logger.getLogger("Minecraft.EqualExchange");
 	private CommandManager cm = new CommandManager(this);
 
 	@Override
@@ -33,8 +33,8 @@ public class EqualExchange extends JavaPlugin {
 			try {
 				DatabaseManager.CanDatabaseConnect();
 			} catch (SQLException e) {
-				eelog.log(Level.SEVERE, "Could not connect to the database.");
-				log.log(Level.SEVERE, "Can not connect to the Database! Disabling..");
+				eelog.log(Level.SEVERE, "Could not connect to the database.", e);
+				log.log(Level.SEVERE, "Can not connect to the Database! Disabling.");
 				this.getPluginLoader().disablePlugin(this);
 			}
 			// Then try to create the tables, this function checks if they
@@ -42,19 +42,19 @@ public class EqualExchange extends JavaPlugin {
 			if (this.isEnabled()) {
 				try {
 					DatabaseManager.CreateTables();
-					log.log(Level.INFO, "Table ee_users exists / was created.");
+					log.log(Level.INFO, "Database tables succesfully initialized.");
 				} catch (SQLException e) {
-					eelog.log(Level.SEVERE, "Could not create the tables. Printing stacktrace.", e);
-					log.log(Level.SEVERE, "Can not create database tables! Disabling..");
+					eelog.log(Level.SEVERE, "Could not create the tables.", e);
+					log.log(Level.SEVERE, "Can not create database tables! Disabling.");
 					this.getPluginLoader().disablePlugin(this);
 				}
 			}
 				if (this.isEnabled()) {
-					log.log(Level.INFO, "EqualExchange has been loaded..");
+					log.log(Level.INFO, "EqualExchange has been loaded.");
 				}
 		} else {
 			log.log(Level.INFO,
-					"Plugin is disabled in configuration. Disabling..");
+					"Plugin is disabled in configuration. Disabling.");
 			this.getPluginLoader().disablePlugin(this);
 		}
 	}
