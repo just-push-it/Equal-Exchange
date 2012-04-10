@@ -1,22 +1,29 @@
 package net.worldoftomorrow.ee.logging;
 
 import java.util.Date;
+import java.io.File;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
+/*
+ * Currently this class only formats HTML,
+ * text is handled by a SimpleFormatter for now.
+ */
 public class LogFormatter extends Formatter{
 	public String format(LogRecord rec){
 		return FormatHTML(rec);
 /*		String type = ConfigurationManager.getConfig(ConfigFile.CONFIG).getString("LogType");
-		if(type.equalsIgnoreCase("html")){
-			return FormatHTML(rec);
-		}
-		else if(type.equalsIgnoreCase("text")){
-			return FormatText(rec);
-		} else { return FormatText(rec); }*/
+*		if(type.equalsIgnoreCase("html")){
+*			return FormatHTML(rec);
+*		}
+*		else if(type.equalsIgnoreCase("text")){
+*			return FormatText(rec);
+*		} else { return FormatText(rec); }
+*/
 	}
 	
 	private String FormatHTML(LogRecord rec){
@@ -68,11 +75,6 @@ public class LogFormatter extends Formatter{
 		return buf.toString();
 	}
 	
-	@SuppressWarnings("unused")
-	private String FormatText(LogRecord rec){
-		return rec.getMessage() + "\n";
-	}
-	
 	private String date(long milliseconds){
 		SimpleDateFormat df = new SimpleDateFormat("MM.dd.yy HH:mm:ss z");
 		Date d = new Date(milliseconds);
@@ -80,12 +82,32 @@ public class LogFormatter extends Formatter{
 	}
 	
 	public String getHead(Handler h){
-		return "<html>\n<head>\n" + (new Date()) + "\n</head>\n<body>\n<pre>\n"
+		/*
+		 * Check to see if the file exists to try and stop the logger from creating a new
+		 * table on each reload
+		 */
+		File eelog = new File("EELog.html");
+		long lm = eelog.lastModified();
+		String head;
+		if(eelog.exists()){
+			head = null;
+		} else {
+		head = "<html>\n<head>\n" + (new Date()) + "\n</head>\n<body>\n<pre>\n"
 		+ "<table border>\n  "
 		+ "<tr><th>Time</th><th>Level</th><th>Record</th><th>Class</th><th>Message</th></tr>\n";
+		}
+		return head;
 	}
 	
 	public String getTail(Handler h){
-		return "</table>\n  </pre></body>\n</html>\n";
+		File eelog = new File("EELog.html");
+		String tail;
+		if(eelog.exists()){
+			tail = null;
+		} else {
+		tail = "</table>\n  </pre></body>\n</html>\n";
+		}
+		return tail;
+		//return "</table>\n  </pre></body>\n</html>\n";
 	}
 }

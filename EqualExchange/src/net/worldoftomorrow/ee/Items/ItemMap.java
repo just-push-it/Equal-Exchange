@@ -215,6 +215,7 @@ public class ItemMap {
 		private int id;
 	    @SuppressWarnings("unused")
 		private int data = 0;
+	    
 	    private Items(int id, int data){
 	    	this.id = id;
 	    	this.data = data;

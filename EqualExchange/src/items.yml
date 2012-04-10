@@ -169,3 +169,6 @@ Items:
     DiamondLeggings: 57,344
     DiamondChestplate: 65,536
     DiamondBlock: 73,728
+    
+CustomItems:
+    12345: 4321

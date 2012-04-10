@@ -11,7 +11,7 @@ EnableLogging: true
 
 DefaultAmount: 0
 #Valid logging options are: text or html
-LogType: html
+LogType: text
 
 DatabaseConfig:
     #Currently, the only valid type is MySQL. SQLite and flatfile may be added later.

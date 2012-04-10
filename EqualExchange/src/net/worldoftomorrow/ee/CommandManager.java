@@ -51,55 +51,56 @@ public class CommandManager {
 			
 			/*----------GET----------*/
 			else if(args[1].equalsIgnoreCase("get")){
-				PlayerInventory inv = player.getInventory();
-				
-				if(args.length == 2){
-					if(args[2].contains(":")){ //If contains data value
-						tempData = args[2].split(":", 2); //Split them up
-						id = SpawnableItem.lookup(tempData[1]).getID(); //Get and set item ID
-						if(MathHelper.canGet(id, 1, player)){ //Check if player can afford
-							if(SpawnableItem.usesData(id)){ //Check if the item can use data - no need to check if id is 0, as 0 does not support data!
-								data = MathHelper.getData(args[2]); //Get the data 
-								DatabaseManager.subtractFromBalance(player, MathHelper.getItemValue(id)); //Subtract from account balance.
-								InventoryManager.giveItems(inv, id, data, 1); //Give the items!
-							} else { player.sendMessage(ChatColor.BLUE + "[EE] This item does not support data."); } //Throw CE if the item does not support data values.
-						} else { player.sendMessage(ChatColor.BLUE + "[EE] You can not afford this item!"); } //if they can't afford it, tell them :D
-					} else { //If does not have data value
-						id = SpawnableItem.lookup(args[2]).getID();
-						if(MathHelper.canGet(id, 1, player)){
-							InventoryManager.giveItems(inv, id, data, 1);
-						}
-					}
-				}
-				//If the length is 3, then give them the amount they want
-				else if(args.length == 3){
-					
-					int amount = 0;
-					
-					try{ amount = Integer.parseInt(args[3]); } //Try to parse the amount.
-					catch (NumberFormatException e) { //If the amount can not be parsed, stop and throw a Command Exception.
-						player.sendMessage(ChatColor.BLUE + "[EE] Integer expected, string received.");
-					}
-					if(amount != 0){
+				if(player.hasPermission("ee.get")){
+					PlayerInventory inv = player.getInventory();
+					if(args.length == 2){
 						if(args[2].contains(":")){ //If contains data value
 							tempData = args[2].split(":", 2); //Split them up
 							id = SpawnableItem.lookup(tempData[1]).getID(); //Get and set item ID
 							if(MathHelper.canGet(id, 1, player)){ //Check if player can afford
 								if(SpawnableItem.usesData(id)){ //Check if the item can use data - no need to check if id is 0, as 0 does not support data!
 									data = MathHelper.getData(args[2]); //Get the data 
-									DatabaseManager.subtractFromBalance(player, MathHelper.getItemValue(id) * amount); //Subtract from account balance.
-									InventoryManager.giveItems(inv, id, data, amount); //Give the items!
+									DatabaseManager.subtractFromBalance(player, MathHelper.getItemValue(id)); //Subtract from account balance.
+									InventoryManager.giveItems(inv, id, data, 1); //Give the items!
 								} else { player.sendMessage(ChatColor.BLUE + "[EE] This item does not support data."); } //Throw CE if the item does not support data values.
 							} else { player.sendMessage(ChatColor.BLUE + "[EE] You can not afford this item!"); } //if they can't afford it, tell them :D
 						} else { //If does not have data value
 							id = SpawnableItem.lookup(args[2]).getID();
 							if(MathHelper.canGet(id, 1, player)){
-								InventoryManager.giveItems(inv, id, data, amount);
+								InventoryManager.giveItems(inv, id, data, 1);
 							}
 						}
-					} else { player.sendMessage(ChatColor.BLUE + "[EE] Amount must be greater than 0"); }
+					}
+					//If the length is 3, then give them the amount they want
+					else if(args.length == 3){
+						
+						int amount = 0;
+						
+						try{ amount = Integer.parseInt(args[3]); } //Try to parse the amount.
+						catch (NumberFormatException e) { //If the amount can not be parsed, stop and throw a Command Exception.
+							player.sendMessage(ChatColor.BLUE + "[EE] Integer expected, string received.");
+						}
+						if(amount != 0){
+							if(args[2].contains(":")){ //If contains data value
+								tempData = args[2].split(":", 2); //Split them up
+								id = SpawnableItem.lookup(tempData[1]).getID(); //Get and set item ID
+								if(MathHelper.canGet(id, 1, player)){ //Check if player can afford
+									if(SpawnableItem.usesData(id)){ //Check if the item can use data - no need to check if id is 0, as 0 does not support data!
+										data = MathHelper.getData(args[2]); //Get the data 
+										DatabaseManager.subtractFromBalance(player, MathHelper.getItemValue(id) * amount); //Subtract from account balance.
+										InventoryManager.giveItems(inv, id, data, amount); //Give the items!
+									} else { player.sendMessage(ChatColor.BLUE + "[EE] This item does not support data."); } //Throw CE if the item does not support data values.
+								} else { player.sendMessage(ChatColor.BLUE + "[EE] You can not afford this item!"); } //if they can't afford it, tell them :D
+							} else { //If does not have data value
+								id = SpawnableItem.lookup(args[2]).getID();
+								if(MathHelper.canGet(id, 1, player)){
+									InventoryManager.giveItems(inv, id, data, amount);
+								}
+							}
+						} else { player.sendMessage(ChatColor.BLUE + "[EE] Amount must be greater than 0"); }
+					}
+					else if(args.length > 3){ player.sendMessage(ChatColor.BLUE + "[EE] Syntax Error: Too many variables."); }
 				}
-				else if(args.length > 3){ player.sendMessage(ChatColor.BLUE + "[EE] Syntax Error: Too many variables."); }
 					} else { player.sendMessage(ChatColor.BLUE + "[EE] You must specify the item you want."); }
 			}
 			
@@ -120,7 +121,6 @@ public class CommandManager {
 			
 			/*----------SET----------*/
 			else if(args[1].equalsIgnoreCase("set")){
-				
 				int i = 0;
 				boolean execute = true;
 				if(args[3].isEmpty()){
